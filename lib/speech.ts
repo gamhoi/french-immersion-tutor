@@ -89,7 +89,7 @@ export function useRecorder() {
         if (e.data.size > 0) chunksRef.current.push(e.data)
       }
       recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: "audio/webm" })
+        const blob = new Blob(chunksRef.current, { type: recorder.mimeType })
         if (urlRef.current) URL.revokeObjectURL(urlRef.current)
         const url = URL.createObjectURL(blob)
         urlRef.current = url
